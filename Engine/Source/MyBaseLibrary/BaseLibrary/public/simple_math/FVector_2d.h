@@ -12,7 +12,7 @@ public:
     f32 Length() const;
     static f32 dot(const FVector_2d& in_a,const FVector_2d& in_b);
     static f32 crossProduct(const FVector_2d& in_a,const FVector_2d& in_b);
-    std::string to_string() const
+    std::string to_string() const;
     void normalize();
 public:
     FVector_2d operator+(const FVector_2d& in_a)const
@@ -73,7 +73,7 @@ public:
     }
     FVector_2d operator*=(f32 in_k)
     {
-        *this=*this*in_k;
+        *this=FVector_2d(this->x*in_k,this->y*in_k);
         return *this;
     }
     FVector_2d operator/=(f32 in_k)
