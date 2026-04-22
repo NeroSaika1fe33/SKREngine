@@ -43,6 +43,7 @@ std::string FVector_2d::to_string() const
 
 void FVector_2d::normalize()
 {
-    if (Length()>SMALL_NUMBER)
-        *this /= Length();
+    const f32 len = Length();
+    if (len>SMALL_NUMBER)
+        *this /= len;
 }

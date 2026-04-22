@@ -61,14 +61,26 @@ public:
     {
         return std::abs(x-a.x) < epsilon && std::abs(y-a.y) < epsilon;
     }
-    FVector_2d operator+=(const FVector_2d& a)
+    FVector_2d& operator+=(const FVector_2d& a)
     {
         *this=*this+a;
         return *this;
     }
-    FVector_2d operator-=(const FVector_2d& a)
+    FVector_2d& operator-=(const FVector_2d& a)
     {
         *this=*this-a;
+        return *this;
+    }
+    FVector_2d& operator*=(const FVector_2d& a)
+    {
+        *this=*this*a;
+        return *this;
+    }
+    FVector_2d& operator/=(const FVector_2d& a)
+    {
+        assert(a.x!=0.f);
+        assert(a.y!=0.f);
+        *this=*this/a;
         return *this;
     }
     FVector_2d operator*(f32 k)const

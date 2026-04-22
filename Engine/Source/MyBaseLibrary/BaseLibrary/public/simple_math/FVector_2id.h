@@ -33,23 +33,27 @@ public:
         assert(a.y!=0);
         return FVector_2id(x/a.x,y/a.y);
     }
-    void operator+=(const FVector_2id& a)
+    FVector_2id& operator+=(const FVector_2id& a)
     {
         *this=*this+a;
+        return *this;
     }
-    void operator-=(const FVector_2id& a)
+    FVector_2id& operator-=(const FVector_2id& a)
     {
         *this=*this-a;
+        return *this;
     }
-    void operator*=(const FVector_2id& a)
+    FVector_2id& operator*=(const FVector_2id& a)
     {
         *this=*this*a;
+        return *this;
     }
-    void operator/=(const FVector_2id& a)
+    FVector_2id& operator/=(const FVector_2id& a)
     {
         assert(a.x!=0);
         assert(a.y!=0);
         *this=*this/a;
+        return *this;
     }
     bool operator>(const FVector_2id& a)const
     {

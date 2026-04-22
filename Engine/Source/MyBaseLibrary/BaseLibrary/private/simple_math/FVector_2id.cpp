@@ -8,8 +8,8 @@ FVector_2id::FVector_2id()
 }
 
 FVector_2id::FVector_2id(f32 x, f32 y)
-    :x(x)
-    ,y(y)
+    :x((f32)x)
+    ,y((f32)y)
 {
 }
 
@@ -37,7 +37,7 @@ int32 FVector_2id::crossProduct(const FVector_2id& a, const FVector_2id& b)
 
 f32 FVector_2id::Length()const
 {
-    return sqrtf(x*x + y*y);
+    return sqrtf((f32)(x*x) + (f32)(y*y));
 }
 
 std::string FVector_2id::to_string() const 
