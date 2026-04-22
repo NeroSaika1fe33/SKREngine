@@ -1,5 +1,6 @@
-﻿#include "simple_math\FVector_4id.h"
-#include "simple_math\FVector_3id.h"
+﻿#include "simple_math/transformation/Vector/vector_4id.h"
+#include "simple_math/transformation/Vector/vector_3id.h"
+
 #include <cstdio>
 
 FVector_4id::FVector_4id()

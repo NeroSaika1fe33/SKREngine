@@ -30,9 +30,9 @@ public:
     }
     FVector_3d operator/(const FVector_3d& a)const
     {
-        assert(a.x != 0.f);
-        assert(a.y != 0.f);
-        assert(a.z != 0.f);
+        assert(abs(a.x)>SMALL_NUMBER);
+        assert(abs(a.y)>SMALL_NUMBER);
+        assert(abs(a.z)>SMALL_NUMBER);
         return FVector_3d(x/a.x,y/a.y,z/a.z);
     }
     bool operator>(const FVector_3d& a)const
@@ -82,9 +82,9 @@ public:
     }
     FVector_3d& operator/=(const FVector_3d& a)
     {
-        assert(a.x!=0.f);
-        assert(a.y!=0.f);
-        assert(a.z!=0.f);
+        assert(abs(a.x)>SMALL_NUMBER);
+        assert(abs(a.y)>SMALL_NUMBER);
+        assert(abs(a.z)>SMALL_NUMBER);
         *this=*this/a;
         return *this;
     }
@@ -94,7 +94,7 @@ public:
     }
     FVector_3d operator/(f32 k)const
     {
-        assert(k != 0.f);
+        assert(abs(k)>SMALL_NUMBER);
         return FVector_3d(x/k,y/k,z/k);
     }
     FVector_3d& operator*=(f32 k)
@@ -104,7 +104,7 @@ public:
     }
     FVector_3d& operator/=(f32 k)
     {
-        assert(k != 0.f);
+        assert(abs(k)>SMALL_NUMBER);
         *this=*this/k;
         return *this;
     }

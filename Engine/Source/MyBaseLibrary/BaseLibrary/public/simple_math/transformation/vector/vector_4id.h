@@ -1,6 +1,5 @@
 ﻿#pragma once
 #include "simple_cpp_core_minimal/simple_core_minimal.h"
-#include "simple_math/FVector_3id.h"
 
 struct FVector_3id;
 struct BASE_LIBRARY_API FVector_4id

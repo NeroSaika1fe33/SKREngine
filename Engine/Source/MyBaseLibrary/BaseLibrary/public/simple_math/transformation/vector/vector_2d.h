@@ -29,8 +29,8 @@ public:
     }
     FVector_2d operator/(const FVector_2d& a)const
     {
-        assert(a.x != 0.f);
-        assert(a.y != 0.f);
+        assert(abs(a.x)>SMALL_NUMBER);
+        assert(abs(a.y)>SMALL_NUMBER);
         return FVector_2d(x/a.x,y/a.y);
     }
     bool operator>(const FVector_2d& a)const
@@ -78,8 +78,8 @@ public:
     }
     FVector_2d& operator/=(const FVector_2d& a)
     {
-        assert(a.x!=0.f);
-        assert(a.y!=0.f);
+        assert(abs(a.x)>SMALL_NUMBER);
+        assert(abs(a.y)>SMALL_NUMBER);
         *this=*this/a;
         return *this;
     }
@@ -89,7 +89,7 @@ public:
     }
     FVector_2d operator/(f32 k)const
     {
-        assert(k != 0.f);
+        assert(abs(k)>SMALL_NUMBER);
         return FVector_2d(x/k,y/k);
     }
     FVector_2d& operator*=(f32 k)
@@ -99,7 +99,7 @@ public:
     }
     FVector_2d& operator/=(f32 k)
     {
-        assert(k != 0.f);
+        assert(abs(k)>SMALL_NUMBER);
         *this=*this/k;
         return *this;
     }

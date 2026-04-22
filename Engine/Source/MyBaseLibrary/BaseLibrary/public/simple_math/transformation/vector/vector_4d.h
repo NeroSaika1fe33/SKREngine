@@ -1,7 +1,7 @@
 ﻿#pragma once
 #include "simple_cpp_core_minimal/simple_core_minimal.h"
 
-struct  FVector_3d;
+struct FVector_3d;
 struct BASE_LIBRARY_API FVector_4d
 {
     f32 x;
@@ -34,9 +34,9 @@ public:
     }
     FVector_4d operator/(const FVector_4d& a)const
     {
-        assert(a.x != 0.f);
-        assert(a.y != 0.f);
-        assert(a.z != 0.f);
+        assert(abs(a.x)>SMALL_NUMBER);
+        assert(abs(a.y)>SMALL_NUMBER);
+        assert(abs(a.z)>SMALL_NUMBER);
 
         return FVector_4d(x/a.x,y/a.y,z/a.z,w/a.w);
     }
@@ -88,9 +88,9 @@ public:
     }
     FVector_4d& operator/=(const FVector_4d& a)
     {
-        assert(a.x!=0.f);
-        assert(a.y!=0.f);
-        assert(a.z!=0.f);
+        assert(abs(a.x)>SMALL_NUMBER);
+        assert(abs(a.y)>SMALL_NUMBER);
+        assert(abs(a.z)>SMALL_NUMBER);
         *this=*this/a;
         return *this;
     }
@@ -100,7 +100,7 @@ public:
     }
     FVector_4d operator/(f32 k)const
     {
-        assert(k != 0.f);
+        assert(abs(k)>SMALL_NUMBER);
         return FVector_4d(x/k,y/k,z/k,w/k);
     }
     FVector_4d& operator*=(f32 k)
@@ -110,7 +110,7 @@ public:
     }
     FVector_4d& operator/=(f32 k)
     {
-        assert(k != 0.f);
+        assert(abs(k)>SMALL_NUMBER);
         *this=*this/k;
         return *this;
     }
