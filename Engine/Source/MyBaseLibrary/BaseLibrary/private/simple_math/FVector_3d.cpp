@@ -1,2 +1,2 @@
-﻿#include "..\public\simple_math\FVector_3d.h"
-#include <stdio.h>
+﻿#include "simple_math\FVector_3d.h"
+#include <cstdio>

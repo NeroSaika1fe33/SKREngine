@@ -10,7 +10,6 @@
 //c++
 #include <iostream>
 #include <vector>
-#include <vector>
 #include <string>
 #include <cmath>
 #include <cassert>

@@ -7,78 +7,88 @@ struct BASE_LIBRARY_API FVector_2d
     f32 y;
 public:
     FVector_2d();
-    FVector_2d(f32 in_x, f32 in_y);
-    FVector_2d(f32 in_Value);
+    FVector_2d(f32 x, f32 y);
+    FVector_2d(f32 Value);
     f32 Length() const;
-    static f32 dot(const FVector_2d& in_a,const FVector_2d& in_b);
-    static f32 crossProduct(const FVector_2d& in_a,const FVector_2d& in_b);
+    static f32 dot(const FVector_2d& a,const FVector_2d& b);
+    static f32 crossProduct(const FVector_2d& a,const FVector_2d& b);
     std::string to_string() const;
     void normalize();
 public:
-    FVector_2d operator+(const FVector_2d& in_a)const
+    FVector_2d operator+(const FVector_2d& a)const
     {
-        return FVector_2d(this->x + in_a.x, this->y + in_a.y);
+        return FVector_2d(x + a.x, y + a.y);
     }
-    FVector_2d operator-(const FVector_2d& in_a)const
+    FVector_2d operator-(const FVector_2d& a)const
     {
-        return FVector_2d(this->x - in_a.x, this->y - in_a.y);
+        return FVector_2d(x - a.x, y - a.y);
     }
-    FVector_2d operator*(const FVector_2d& in_a)
+    FVector_2d operator*(const FVector_2d& a)const
     {
-        return FVector_2d(this->x*in_a.x,this->y*in_a.y);
+        return FVector_2d(x*a.x,y*a.y);
     }
-    FVector_2d operator/(const FVector_2d& in_a)const
+    FVector_2d operator/(const FVector_2d& a)const
     {
-        return FVector_2d(this->x/in_a.x,this->y/in_a.y);
+        assert(a.x != 0.f);
+        assert(a.y != 0.f);
+        return FVector_2d(x/a.x,y/a.y);
     }
-    bool operator>(const FVector_2d& in_a)const
+    bool operator>(const FVector_2d& a)const
     {
-        return this->x>in_a.x && this->y>in_a.y;
+        return x>a.x && y>a.y;
     }
-    bool operator<(const FVector_2d& in_a)const
+    bool operator<(const FVector_2d& a)const
     {
-        return this->x<in_a.x && this->y<in_a.y;
+        return x<a.x && y<a.y;
     }
-    bool operator>=(const FVector_2d& in_a)const
+    bool operator>=(const FVector_2d& a)const
     {
-        return this->x>=in_a.x && this->y>=in_a.y;
+        return x>=a.x && y>=a.y;
     }
-    bool operator<=(const FVector_2d& in_a)const
+    bool operator<=(const FVector_2d& a)const
     {
-        return this->x<=in_a.x && this->y<=in_a.y;
+        return x<=a.x && y<=a.y;
     }
-    void operator+=(const FVector_2d& in_a)
+    bool operator==(const FVector_2d& a)const
     {
-        *this=*this+in_a;
+        return x==a.x && y==a.y;
     }
-    void operator-=(const FVector_2d& in_a)
+    bool operator!=(const FVector_2d& a)const
     {
-        *this=*this-in_a;
+        return !(*this==a);
     }
-    FVector_2d operator+(f32 in_k)const
+    bool IsNearlyEqual(const FVector_2d& a,f32 epsilon = 1.e-4f)const
     {
-        return FVector_2d(this->x + in_k,this->y + in_k);
+        return std::abs(x-a.x) < epsilon && std::abs(y-a.y) < epsilon;
     }
-    FVector_2d operator-(f32 in_k)const
+    FVector_2d operator+=(const FVector_2d& a)
     {
-        return FVector_2d(this->x - in_k,this->y - in_k);
-    }
-    FVector_2d operator*(f32 in_k)const
-    {
-        return FVector_2d(this->x*in_k,this->y*in_k);
-    }
-    FVector_2d operator/(f32 in_k)const
-    {
-        return FVector_2d(this->x/in_k,this->y/in_k);
-    }
-    FVector_2d operator*=(f32 in_k)
-    {
-        *this=FVector_2d(this->x*in_k,this->y*in_k);
+        *this=*this+a;
         return *this;
     }
-    FVector_2d operator/=(f32 in_k)
+    FVector_2d operator-=(const FVector_2d& a)
     {
-        *this=*this/in_k;
+        *this=*this-a;
+        return *this;
+    }
+    FVector_2d operator*(f32 k)const
+    {
+        return FVector_2d(x*k,y*k);
+    }
+    FVector_2d operator/(f32 k)const
+    {
+        assert(k != 0.f);
+        return FVector_2d(x/k,y/k);
+    }
+    FVector_2d& operator*=(f32 k)
+    {
+        *this=FVector_2d(x*k,y*k);
+        return *this;
+    }
+    FVector_2d& operator/=(f32 k)
+    {
+        assert(k != 0.f);
+        *this=*this/k;
         return *this;
     }
 };
