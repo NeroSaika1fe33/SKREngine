@@ -1,5 +1,5 @@
-﻿#include "simple_math/transformation/Vector/vector_4id.h"
-#include "simple_math/transformation/Vector/vector_3id.h"
+﻿#include "simple_math/transformation/vector/vector_4id.h"
+#include "simple_math/transformation/vector/vector_3id.h"
 
 #include <cstdio>
 
