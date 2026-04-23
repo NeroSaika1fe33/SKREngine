@@ -804,7 +804,6 @@
     <ClInclude Include="BaseLibrary\public\simple_math\math_utils.h" />
     <ClInclude Include="BaseLibrary\public\simple_math\simple_core_math.h" />
     <ClInclude Include="BaseLibrary\public\simple_math\simple_math.h" />
-    <ClInclude Include="BaseLibrary\public\simple_math\transformation\math_library.hpp" />
     <ClInclude Include="BaseLibrary\public\simple_math\Transformation\Matrix\matrix_2x2.h" />
     <ClInclude Include="BaseLibrary\public\simple_math\Transformation\Matrix\matrix_3x3.h" />
     <ClInclude Include="BaseLibrary\public\simple_math\Transformation\Matrix\matrix_4x3.h" />
