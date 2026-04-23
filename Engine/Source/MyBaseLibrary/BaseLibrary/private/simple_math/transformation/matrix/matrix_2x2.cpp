@@ -32,6 +32,4 @@ FMatrix_2x2 FMatrix_2x2::inverse()const
     assert(abs(d)>SMALL_NUMBER);
     return FMatrix_2x2(m22,-m12,
                        -m21,m11)/d;
-    
-    
 }

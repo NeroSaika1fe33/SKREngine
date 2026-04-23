@@ -31,7 +31,7 @@ public:
     void identity();
     f32 determinant();
     f32 determinant(const FMatrix_4x3& in_m);
-    FMatrix_4x3& inverse();
-    FMatrix_4x3& inverse(const FMatrix_4x3& in_m);
+    FMatrix_4x3 inversion()const;
+    FMatrix_4x3 inversion(const FMatrix_4x3& in_m)const;
     
 };
