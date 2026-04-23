@@ -11,3 +11,8 @@
 #include "transformation/vector/vector_3id.h"
 #include "transformation/vector/vector_4id.h"
 #include "transformation/vector/vector_color.h"
+
+#include "transformation/matrix/matrix_2x2.h"
+#include "transformation/matrix/matrix_3x3.h"
+#include "transformation/matrix/matrix_4x3.h"
+#include "transformation/matrix/matrix_4x4.h"

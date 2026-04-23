@@ -1,4 +1,5 @@
 ﻿#include "simple_math/transformation/matrix/matrix_2x2.h"
+#include <cstdio>
 
 
 FMatrix_2x2::FMatrix_2x2()
