@@ -30,8 +30,8 @@ public:
         f32 m41,f32 m42,f32 m43,f32 m44    
     );
     
-    FMatrix_4x4(const FMatrix_4x4& a);
-    FMatrix_4x4(const FMatrix_3x3& a);
+    FMatrix_4x4(const FMatrix_4x4& in_matrix);
+    FMatrix_4x4(const FMatrix_3x3& in_matrix);
     
     FMatrix_4x4& operator=(const FMatrix_3x3& a);
     
@@ -168,11 +168,22 @@ public:
     
     FMatrix_4x4& operator/=(f32 k)
     {
-        assert(abs(k)>SMALL_NUMBER);
+        assert(std::abs(k)>SMALL_NUMBER);
         *this = *this / k;
         return *this;
     }
     
+    bool FMatrix_4x4::operator==(const FMatrix_4x4& a) const
+    {
+        for (int32 i = 0; i < 16; ++i)
+        {
+            if (std::abs(m_array[i] - a.m_array[i]) > SMALL_NUMBER)
+            {
+                return false;
+            }
+        }
+        return true;
+    }
 public:
     void inertia_to_object(const FRotator& in_rot);
     void object_to_inertia(const FRotator& in_rot);

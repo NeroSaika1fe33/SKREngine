@@ -1,5 +1,6 @@
 ﻿#pragma once
 #include "simple_cpp_core_minimal/simple_core_minimal.h"
+#include "simple_math/Transformation/vector/vector_3d.h"
 
 struct FRotator;
 struct FMatrix_4x4;
@@ -30,8 +31,28 @@ public:
     
     void identity();
     f32 determinant();
-    f32 determinant(const FMatrix_4x3& in_m);
+    f32 determinant(const FMatrix_4x3& in_m)const;
     FMatrix_4x3 inversion()const;
     FMatrix_4x3 inversion(const FMatrix_4x3& in_m)const;
     
+    FVector_3d operator*(const FVector_3d& a)const
+    {
+        return FVector_3d(
+            a.x*m11 + a.y*m21 + a.z*m31+x,
+            a.x*m12 + a.y*m22 + a.z*m32+y,
+            a.x*m13 + a.y*m23 + a.z*m33+z        
+        );
+    }
+    
+    bool FMatrix_4x3::operator==(const FMatrix_4x3& a) const
+    {
+        for (int32 i = 0; i < 12; ++i)
+        {
+            if (std::abs(m_array[i] - a.m_array[i]) > SMALL_NUMBER)
+            {
+                return false;
+            }
+        }
+        return true;
+    }
 };

@@ -88,9 +88,9 @@ public:
     }
     FVector_4d& operator/=(const FVector_4d& a)
     {
-        assert(abs(a.x)>SMALL_NUMBER);
-        assert(abs(a.y)>SMALL_NUMBER);
-        assert(abs(a.z)>SMALL_NUMBER);
+        assert(std::abs(a.x)>SMALL_NUMBER);
+        assert(std::abs(a.y)>SMALL_NUMBER);
+        assert(std::abs(a.z)>SMALL_NUMBER);
         *this=*this/a;
         return *this;
     }
@@ -100,7 +100,7 @@ public:
     }
     FVector_4d operator/(f32 k)const
     {
-        assert(abs(k)>SMALL_NUMBER);
+        assert(std::abs(k)>SMALL_NUMBER);
         return FVector_4d(x/k,y/k,z/k,w/k);
     }
     FVector_4d& operator*=(f32 k)
@@ -110,7 +110,7 @@ public:
     }
     FVector_4d& operator/=(f32 k)
     {
-        assert(abs(k)>SMALL_NUMBER);
+        assert(std::abs(k)>SMALL_NUMBER);
         *this=*this/k;
         return *this;
     }

@@ -24,6 +24,10 @@ public:
     
     static FVector_c TranslateHex(uint32 hex);
     
+    static FVector_c ToRGBA(const FVector_c& color);
+    
+    static FVector_c Tolinear(const FVector_c& color);
+    
 public:
     FVector_c operator+(const FVector_c& color) const 
     {

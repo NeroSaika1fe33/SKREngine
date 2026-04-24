@@ -114,8 +114,20 @@ public:
     
     FMatrix_2x2& operator/=(const f32 k)
     {
-        assert(abs(k)>SMALL_NUMBER);
+        assert(std::abs(k)>SMALL_NUMBER);
         *this=*this/k;
         return *this;
+    }
+    
+    bool FMatrix_2x2::operator==(const FMatrix_2x2& a) const
+    {
+        for (int32 i = 0; i < 4; ++i)
+        {
+            if (std::abs(m_array[i] - a.m_array[i]) > SMALL_NUMBER)
+            {
+                return false;
+            }
+        }
+        return true;
     }
 };

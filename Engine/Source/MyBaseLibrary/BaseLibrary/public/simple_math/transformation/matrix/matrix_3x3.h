@@ -108,7 +108,7 @@ public:
     
     FMatrix_3x3 operator/(f32 k)const
     {
-        assert(abs(k)>0.f);
+        assert(std::abs(k)>0.f);
         return FMatrix_3x3(
             m11/k,m12/k,m13/k,
             m21/k,m22/k,m23/k,
@@ -140,6 +140,17 @@ public:
         return *this;
     }
     
+    bool FMatrix_3x3::operator==(const FMatrix_3x3& a) const
+    {
+        for (int32 i = 0; i < 9; ++i)
+        {
+            if (std::abs(m_array[i] - a.m_array[i]) > SMALL_NUMBER)
+            {
+                return false;
+            }
+        }
+        return true;
+    }
 public:
     void inertia_to_object(const FRotator& in_rot);
     void object_to_inertia(const FRotator& in_rot);
