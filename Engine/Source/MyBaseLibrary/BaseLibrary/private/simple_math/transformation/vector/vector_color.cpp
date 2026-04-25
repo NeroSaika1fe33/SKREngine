@@ -77,17 +77,3 @@ color.g/255.f,
 color.b/255.f,
 color.a);
 }
-
-FVector_c FVector_c::Translate(const FVector_c& color)
-{
-    assert(color.a>1.0f);
-    if (color.r>1.0f||color.g>1.0f||color.b>1.0f)
-        return FVector_c(
-            color.r*255.f,
-            color.g*255.f,
-            color.b*255.f,
-            color.a
-        );
-    else
-        return color;
-}

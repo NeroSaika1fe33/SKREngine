@@ -10,8 +10,13 @@ struct BASE_LIBRARY_API FEuler
     f32 pitch;
     f32 bank;
     
-    FEuler ()
+    FEuler ();
     
 public:
+    
+};
+
+struct BASE_LIBRARY_API FRotator
+{
     
 };
