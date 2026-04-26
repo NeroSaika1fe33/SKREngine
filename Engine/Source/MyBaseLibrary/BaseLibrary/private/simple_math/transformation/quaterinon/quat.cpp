@@ -210,13 +210,25 @@ FRotator FQuat::get_rot_by_inertia_to_object_v2()
 
 FQuat FQuat::lerp(const FQuat& in_q0, const FQuat& in_q1, f32 in_t)
 {
+    //double cover
     f32 bias = (in_q0.dot(in_q1))>0.f?1.f:-1.f;
     return (in_q0*(bias*(1-in_t)))+in_q1*in_t;    
 }
 
+FQuat FQuat::nlerp(const FQuat& in_q0, const FQuat& in_q1, f32 in_t)
+{
+    //double cover
+    f32 bias = (in_q0.dot(in_q1))>0.f?1.f:-1.f;
+    FQuat result=(in_q0*(bias*(1-in_t)))+in_q1*in_t;
+    result.normalize();
+    return result; 
+}
+
 FQuat FQuat::blinear_lerp(const FQuat& in_q00, const FQuat& in_q10, const FQuat& in_q01, const FQuat& in_q11,f32 x,f32 y)
 {
-    return lerp(lerp(in_q00,in_q01,x),lerp(in_q10,in_q01,y),y);
+    FQuat result=lerp(lerp(in_q00,in_q10,x),lerp(in_q01,in_q11,x),y);
+    result.normalize();
+    return result;
 }
 
 FQuat FQuat::s_lerp(const FQuat& in_q0, const FQuat& in_q1, f32 in_t)
@@ -228,10 +240,10 @@ FQuat FQuat::s_lerp(const FQuat& in_q0, const FQuat& in_q1, f32 in_t)
     FQuat tmp=in_q1;
     if (c<0.f)
     {
+        //double cover
         c=-c;
         tmp=FQuat(-in_q1.x,-in_q1.y,-in_q1.z,-in_q1.w);
     }
-    c=c>=0.f?c:-c;
     
     assert(c<1.1f);
     
@@ -263,18 +275,55 @@ FQuat FQuat::s_lerp(const FQuat& in_q0, const FQuat& in_q1, f32 in_t)
 
 FQuat FQuat::s_lerp_full_path(const FQuat& in_q0, const FQuat& in_q1, f32 in_t)
 {
+    f32 k0 = 0.f;
+    f32 k1 = 0.f;
+    //cos
+    f32 c=in_q0.dot(in_q1);
+    c=math_libray::Clamp(c,-1.f,1.f);
+    f32 angle = acos(c);
+    if (std::abs(angle)<=SMALL_NUMBER)
+        return in_q0;
+    
+    //slerp
+    f32 s=sqrt(1.f-c*c);
+    f32 inv_s = 1.f/s;
+        
+    k0=sin((1.f-in_t)*angle)*inv_s;
+    k1=sin(in_t*angle)*inv_s;
+    
+    return in_q0*k0+in_q1*k1;
 }
 
 FQuat FQuat::s_quad(const FQuat& in_q0, const FQuat& in_q1, const FQuat& in_s0, const FQuat& in_s1, f32 in_t)
 {
+    FQuat q1=s_lerp(in_q0,in_q1,in_t);
+    FQuat q2=s_lerp_full_path(in_s0,in_s1,in_t);
+    FQuat result=s_lerp_full_path(q1,q2,2.f*in_t*(1.f-in_t));
+    result.normalize();
+    return result;
 }
 
 FQuat FQuat::s_quad_full_path(const FQuat& in_q0, const FQuat& in_q1, const FQuat& in_s0, const FQuat& in_s1, f32 in_t)
 {
+    FQuat q1=s_lerp_full_path(in_q0,in_q1,in_t);
+    FQuat q2=s_lerp_full_path(in_s0,in_s1,in_t);
+    FQuat result=s_lerp_full_path(q1,q2,2.f*in_t*(1.f-in_t));
+    result.normalize();
+    return result;
 }
 
 FQuat FQuat::get_tangents(const FQuat& in_prev_q, const FQuat& in_q, const FQuat& in_next_q)
 {
+    //-P1
+    FQuat inv_p=in_q.inverse();
+    
+    //angular displacement
+    FQuat r1=(inv_p*in_prev_q).log();
+    FQuat r2=(inv_p*in_next_q).log();
+    
+    FQuat pre_exp=(r1+r2)*-0.25f;
+    
+    return in_q * pre_exp.exp();
 }
 
 const FQuat FQuat::identity()

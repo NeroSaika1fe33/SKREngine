@@ -34,7 +34,7 @@ public:
     f32 get_half_angle_radian()const;
     f32 get_angle_radian()const;
     f32 get_angle()const;
-    void normalize(f32 in_tolerance);
+    void normalize(f32 in_tolerance = SMALL_NUMBER);
     
     static FQuat CreateRot(const FVector_3d& a, f32 angle);
     void rotator_by_axis(const FVector_3d& a,f32 angle);
@@ -51,7 +51,7 @@ public:
     FRotator get_rot_by_inertia_to_object_v2();
     
     static FQuat lerp(const FQuat& in_q0,const FQuat& in_q1,f32 in_t);
-    
+    static FQuat nlerp(const FQuat& in_q0, const FQuat& in_q1, f32 in_t);
     static FQuat blinear_lerp(const FQuat& in_q00,const FQuat& in_q10,const FQuat& in_q01,const FQuat& in_q11,f32 x,f32 y);
     
     static FQuat s_lerp(const FQuat& in_q0,const FQuat& in_q1,f32 in_t);
