@@ -60,7 +60,7 @@ public:
     static FQuat s_quad(const FQuat& in_q0,const FQuat& in_q1,const FQuat& in_s0,const FQuat& in_s1,f32 in_t);
     static FQuat s_quad_full_path(const FQuat& in_q0,const FQuat& in_q1,const FQuat& in_s0,const FQuat& in_s1,f32 in_t);
     
-    //obtain in_s0 in_s1
+    //find in_s0 in_s1
     static FQuat get_tangents(const FQuat& in_prev_q,const FQuat& in_q,const FQuat& in_next_q);
     
     const FQuat identity();
