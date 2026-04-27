@@ -25,15 +25,15 @@ void FRotator::inertia_to_object(const FMatrix_3x3& in_rot_matrix)
     if (std::abs(euler.pitch_radian)>0.99999f)
     {
         euler.pitch_radian=PI/2.f;
-        euler.yaw_radian=atan2(-in_rot_matrix.m31,in_rot_matrix.m11);
+        euler.yaw_radian=std::atan2(-in_rot_matrix.m31,in_rot_matrix.m11);
         euler.roll_radian=0.f;
     }
     else
     {
         
         euler.pitch_radian=std::asin(s);
-        euler.yaw_radian=atan2(-in_rot_matrix.m12,in_rot_matrix.m11);
-        euler.roll_radian=std::atan2(in_rot_matrix.m23,in_rot_matrix.m33);
+        euler.yaw_radian=std::atan2(-in_rot_matrix.m21,in_rot_matrix.m11);
+        euler.roll_radian=std::atan2(in_rot_matrix.m32,in_rot_matrix.m33);
     }
     euler_to_rotator(euler);
 }
@@ -54,8 +54,8 @@ void FRotator::object_to_inertia(const FMatrix_3x3& in_rot_matrix)
     else
     {
         euler.pitch_radian=std::asin(s);
-        euler.yaw_radian=std::atan2(in_rot_matrix.m21,in_rot_matrix.m11);
-        euler.roll_radian=std::atan2(in_rot_matrix.m32,in_rot_matrix.m33);
+        euler.yaw_radian=std::atan2(in_rot_matrix.m12,in_rot_matrix.m11);
+        euler.roll_radian=std::atan2(in_rot_matrix.m23,in_rot_matrix.m33);
     }
     euler_to_rotator(euler);
 }
