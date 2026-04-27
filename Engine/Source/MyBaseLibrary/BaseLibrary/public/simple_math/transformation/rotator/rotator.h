@@ -6,20 +6,21 @@ struct FQuat;
 
 struct BASE_LIBRARY_API FEuler
 {
-    f32 heading;
-    f32 pitch;
-    f32 roll;
+    //pitch yaw roll in radian
+    f32 pitch_radian;
+    f32 yaw_radian;
+    f32 roll_radian;
     FEuler()
-    :heading(0),pitch(0),roll(0)
+    :pitch_radian(0),yaw_radian(0),roll_radian(0)
     {}
-    FEuler(f32 in_heading,f32 in_pitch,f32 in_roll)
-        :heading(in_heading),pitch(in_pitch),roll(in_roll)
+    FEuler(f32 in_pitch_radian,f32 in_yaw_radian,f32 in_roll_radian)
+        :pitch_radian(in_pitch_radian),yaw_radian(in_yaw_radian),roll_radian(in_roll_radian)
     {}
     FEuler operator/(f32 k)
     {
         assert(std::abs(k)>SMALL_NUMBER);
         
-        return FEuler(heading/k,pitch/k,roll/k);
+        return FEuler(pitch_radian/k,yaw_radian/k,roll_radian/k);
     }
     
     FEuler& operator/=(f32 k)
