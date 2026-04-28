@@ -335,7 +335,3 @@ bool FQuat::is_normalized()const
 {
     return (abs(size_squared()-1.f))<=SMALL_NUMBER;
 }
-
-
-
-
