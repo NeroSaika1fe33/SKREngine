@@ -36,8 +36,13 @@ bool math_utils::scalar_nearly_equal_int(int32 i1, int32 i2, int32 epsilon)
 {
 }
 
-bool math_utils::IsNearlyZero(f32 in_vector, f32 epsilon)
+bool math_utils::IsNearlyZero(f32 k, f32 epsilon)
 {
+    if (std::abs(k) <= epsilon)
+    {
+        return true;       
+    }
+    return false;    
 }
 
 FMatrix_4x4 math_utils::matrix_perspective(f32 in_fov_radian, f32 aspect_ratio, f32 near_z, f32 far_z)
@@ -108,10 +113,10 @@ FVector_3d math_utils::rotate_quat(const FVector_3d& in_target_v, const FQuat& i
 void math_utils::matrix_to_quat(const FMatrix_3x3& in_rot_matrix, FQuat& out_quat)
 {   
     f32 value[4]={0};
-    value[0]=in_rot_matrix.m11+in_rot_matrix.m22+in_rot_matrix.m33;//w
-    value[1]=in_rot_matrix.m11-in_rot_matrix.m22-in_rot_matrix.m33;//x
-    value[2]=-in_rot_matrix.m11+in_rot_matrix.m22-in_rot_matrix.m33;//y
-    value[3]=-in_rot_matrix.m11-in_rot_matrix.m22+in_rot_matrix.m33;//z
+    value[0]=in_rot_matrix.m11+in_rot_matrix.m22+in_rot_matrix.m33;//4w^2-1
+    value[1]=in_rot_matrix.m11-in_rot_matrix.m22-in_rot_matrix.m33;//4x^2-1
+    value[2]=-in_rot_matrix.m11+in_rot_matrix.m22-in_rot_matrix.m33;//4y^2-1
+    value[3]=-in_rot_matrix.m11-in_rot_matrix.m22+in_rot_matrix.m33;//4z^2-1
     
     //biggest value
     f32 tmp=0.f;
@@ -125,7 +130,7 @@ void math_utils::matrix_to_quat(const FMatrix_3x3& in_rot_matrix, FQuat& out_qua
         }
     }
     
-    //shepperd by switch case
+    //switch case
     if (tmp!=0.f)
     {
         f32 value_sqrt = sqrt(tmp+1.f)*0.5f;

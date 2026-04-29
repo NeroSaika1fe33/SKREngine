@@ -25,7 +25,7 @@ namespace math_utils
     //bool
     bool BASE_LIBRARY_API scalar_nearly_equal_float(f32 f1,f32 f2,f32 epsilon);
     bool BASE_LIBRARY_API scalar_nearly_equal_int(int32 i1,int32 i2,int32 epsilon);
-    bool BASE_LIBRARY_API IsNearlyZero(f32 in_vector,f32 epsilon);
+    bool BASE_LIBRARY_API IsNearlyZero(f32 in_vector,f32 epsilon = SMALL_NUMBER);
     
     //perspective
     FMatrix_4x4 BASE_LIBRARY_API matrix_perspective(f32 in_fov_radian,f32 aspect_ratio,f32 near_z, f32 far_z);
