@@ -156,13 +156,22 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="DebugLog\simpleLog.cpp" />
     <ClCompile Include="Engine.cpp" />
+    <ClCompile Include="Platform\Windows\WindowsEngine.cpp" />
+    <ClCompile Include="SKREngine.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MyBaseLibrary\MyBaseLibrary.vcxproj">
       <Project>{2a25e618-b0ea-4ed6-9303-3e7b4920e470}</Project>
       <Name>MyBaseLibrary</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="DebugLog\simpleLog.h" />
+    <ClInclude Include="Engine.h" />
+    <ClInclude Include="Platform\Windows\WindowsEngine.h" />
+    <ClInclude Include="SKREngine.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

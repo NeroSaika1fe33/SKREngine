@@ -324,6 +324,8 @@
     <ClCompile Include="BaseLibrary\private\simple_math\Transformation\vector\vector_4d.cpp" />
     <ClCompile Include="BaseLibrary\private\simple_math\Transformation\vector\vector_4id.cpp" />
     <ClCompile Include="BaseLibrary\private\simple_math\transformation\vector\vector_color.cpp" />
+    <ClCompile Include="BaseLibrary\public\simple_c_log\simple_c_log.cpp" />
+    <ClCompile Include="BaseLibrary\public\simple_library.cpp" />
     <ClCompile Include="BaseLibrary\third_party_library\tinyxml\tinystr.cpp" />
     <ClCompile Include="BaseLibrary\third_party_library\tinyxml\tinyxml.cpp" />
     <ClCompile Include="BaseLibrary\third_party_library\tinyxml\tinyxmlerror.cpp" />
@@ -335,6 +337,8 @@
   <ItemGroup>
     <ClInclude Include="BaseLibrary\public\base_library_macro.h" />
     <ClInclude Include="BaseLibrary\public\simple_cpp_core_minimal\simple_core_minimal.h" />
+    <ClInclude Include="BaseLibrary\public\simple_c_log\simple_c_log.h" />
+    <ClInclude Include="BaseLibrary\public\simple_library.h" />
     <ClInclude Include="BaseLibrary\public\simple_math\math_library.hpp" />
     <ClInclude Include="BaseLibrary\public\simple_math\math_utils.h" />
     <ClInclude Include="BaseLibrary\public\simple_math\simple_core_math.h" />
