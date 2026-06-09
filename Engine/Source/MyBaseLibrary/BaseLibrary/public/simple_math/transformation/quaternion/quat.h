@@ -46,6 +46,8 @@ public:
     void inertia_to_object(const FRotator& in_rot);
     void object_to_inertia(const FRotator& in_rot);
     void object_to_inertia_v2(const FRotator& in_rot);
+    void inertia_to_object_v2(const FRotator& in_rot);
+   
 
     FRotator get_rot_by_object_to_inertia_v2();
     FRotator get_rot_by_inertia_to_object_v2();
@@ -66,4 +68,8 @@ public:
     const FQuat identity();
     
     bool is_normalized()const;
+    
+protected:
+    void get_cos_sin(const FRotator& in_rot, f32& cos_h_roll, f32& sin_h_roll, f32& cos_h_pitch, f32& sin_h_pitch, f32& cos_h_yaw, f32& sin_h_yaw);
+
 };

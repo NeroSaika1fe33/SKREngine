@@ -200,8 +200,13 @@ void FQuat::object_to_inertia_v2(const FRotator& in_rot)
 {
 }
 
+void FQuat::inertia_to_object_v2(const FRotator& in_rot)
+{
+}
+
 FRotator FQuat::get_rot_by_object_to_inertia_v2()
 {
+    
 }
 
 FRotator FQuat::get_rot_by_inertia_to_object_v2()
@@ -212,7 +217,7 @@ FQuat FQuat::lerp(const FQuat& in_q0, const FQuat& in_q1, f32 in_t)
 {
     //double cover
     f32 bias = (in_q0.dot(in_q1))>0.f?1.f:-1.f;
-    return (in_q0*(bias*(1-in_t)))+in_q1*in_t;    
+    return (in_q0*(bias*(1-in_t)))+in_q1*in_t;
 }
 
 FQuat FQuat::nlerp(const FQuat& in_q0, const FQuat& in_q1, f32 in_t)
@@ -334,4 +339,9 @@ const FQuat FQuat::identity()
 bool FQuat::is_normalized()const
 {
     return (abs(size_squared()-1.f))<=SMALL_NUMBER;
+}
+
+void FQuat::get_cos_sin(const FRotator& in_rot, f32& cos_h_roll, f32& sin_h_roll, f32& cos_h_pitch, f32& sin_h_pitch,
+    f32& cos_h_yaw, f32& sin_h_yaw)
+{
 }
