@@ -1,36 +1,36 @@
 ﻿#pragma once
 // Copyright (C) RenZhai.2022.All Rights Reserved.
-//作者 人宅
-//该c库的详细源码讲解在AboutCG 《手把手入门硬核c语言》视频工程里面：
+// 作者：人宅
+// この C ライブラリのソースコードの詳しい解説は AboutCG の C 言語入門動画教材を参照：
 //https://www.aboutcg.org/courseDetails/902/introduce
-//希望学习其他方面技术 比如做UE4游戏, 可以访问下列网址：
+// UE4 ゲーム開発など、その他の技術については以下のサイトを参照：
 //https://zhuanlan.zhihu.com/p/60117613
 //
-//bibi可以看到各个人宅系列教程介绍：
+// bilibili では作者の各種チュートリアルの紹介を視聴できる：
 //https://space.bilibili.com/29544409
 //
-//个人博客网站
+// 個人ブログ
 //http://renzhai.net
 //
-//关于本套案例的详细操作 :
-//文字版本(详细)：
+// このサンプルの詳しい操作方法：
+// テキスト版（詳細）：
 //https://zhuanlan.zhihu.com/p/144558934
-//视频版本：
+// 動画版：
 //https://www.bilibili.com/video/BV1x5411s7s3
 
 #ifdef CLOSE_DISABLE_DEBUG_INFOR
-#pragma warning(disable:4267)//“参数”：从“xx”转换为“xx”，可能会丢失数据
-#pragma warning(disable:4311)// 类型转换：指针从“您的ptr*”截断为“DWORD”
-#pragma warning(disable:4244)// 从“xx”转换为“xx”，可能会丢失数据
-#pragma warning(disable:4309)// 常数值截断
-#pragma warning(disable:4305)//“参数”：从“int”截断为“u\u short”
-#pragma warning(disable:4133)// function”：不兼容的类型-从“char[260]”到“LPWSTR”
-#pragma warning(disable:4090)//“正在初始化”：不同的“const”限定符
-#pragma warning(disable:4013)//“XXX”未定义；假设外部返回int
-#pragma warning(disable:4251)// 以后开启当前状态检查dll情况
-#pragma warning(disable:4717)// 在所有控制路径上递归，函数将导致运行时堆栈溢出
-#pragma warning(disable:4099)// 首先使用“struct”看到的类型名称现在使用“class”看到
-#pragma warning(disable:4018)// ：“<”：有符号/无符号不匹配
+#pragma warning(disable:4267)// 引数：型変換によってデータが失われる可能性がある
+#pragma warning(disable:4311)// 型変換：ポインターを DWORD に変換すると切り詰められる可能性がある
+#pragma warning(disable:4244)// 型変換によってデータが失われる可能性がある
+#pragma warning(disable:4309)// 定数値の切り詰め
+#pragma warning(disable:4305)// 引数：型変換による切り詰め
+#pragma warning(disable:4133)// 互換性のない型：char[260] から LPWSTR への変換
+#pragma warning(disable:4090)// 初期化：const 修飾子が異なる
+#pragma warning(disable:4013)// 関数が未定義のため、戻り値を int とする外部関数と仮定する
+#pragma warning(disable:4251)// DLL の状態チェックは後で有効にする
+#pragma warning(disable:4717)// すべての制御パスで再帰が発生し、実行時にスタックがオーバーフローする
+#pragma warning(disable:4099)// struct として宣言された型が class として参照されている
+#pragma warning(disable:4018)// 比較：符号付きと符号なしの型が一致しない
 #pragma warning(disable:4477)
 #pragma warning(disable:4244)//'argument': conversion from 'float' to 'int', possible loss of data
 #endif // DEBUG
@@ -63,10 +63,10 @@
 // //image
 // #include "simple_image/simple_image.h"
 //
-// //容器
+// コンテナー
 // #include "simple_library/public/simple_array/simple_hash_array.h"
 //
-// //第三方库
+// 外部ライブラリ
 // //xml
 // #include "simple_library/third_party_library/tinyxml/tinystr.h"
 // #include "simple_library/third_party_library/tinyxml/tinyxml.h"
